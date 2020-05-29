@@ -8,15 +8,21 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var vwText: UITextView!
-    
+    var i = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "VC \(i)"
+    }
+    
 
-        // Do any additional setup after loading the view.
+    @IBAction func onBtnNext() {
+        let nextVC = storyboard?.instantiateViewController(identifier: "\(MainVC.self)") as! MainVC
+        nextVC.i = self.i + 1
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     
 
